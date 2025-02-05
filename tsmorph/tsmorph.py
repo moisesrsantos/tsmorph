@@ -2,8 +2,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from pycatch22 import catch22_all
-from neuralforecast.losses.numpy import mase
-from .utils import plot_gradient_timeseries
+from .utils import plot_gradient_timeseries, nmae
 
 class TSmorph:
     """
@@ -61,7 +60,7 @@ class TSmorph:
             horizon (int): Forecast horizon for testing.
         """
         feature_values = []
-        mase_values = []
+        nmae_values = []
         
         for col in df.columns:
             series = df[col].values
@@ -80,19 +79,19 @@ class TSmorph:
             forecast_df = model.predict(test)
             forecast = forecast_df[forecast_df['unique_id'] == col][model.models[0].__class__.__name__].values[:horizon]
             
-            mase_values.append(mase(y=test['y'].values, y_hat=forecast, y_train=df_forecast.iloc[:-horizon]['y'].values, seasonality=seasonality))
+            nmae_values.append(nmae(y=test['y'].values, y_hat=forecast))
         
         feature_values = np.array(feature_values)
-        mase_values = np.array(mase_values)
+        nmae_values = np.array(nmae_values)
         
         num_features = feature_values.shape[1]
         x_values = np.arange(len(df.columns))
         
         for i in range(num_features):
             plt.figure(figsize=(8, 5))
-            sc = plt.scatter(x_values, feature_values[:, i], c=mase_values, cmap='viridis', edgecolors='k')
-            plt.colorbar(sc, label='MASE')
+            sc = plt.scatter(x_values, feature_values[:, i], c=nmae_values, cmap='viridis', edgecolors='k')
+            plt.colorbar(sc, label='NMAE')
             plt.xlabel('Granularity Level')
             plt.ylabel(feature_names[i])
-            plt.title(f'{feature_names[i]} variation with MASE')
+            plt.title(f'{feature_names[i]} variation with NMAE')
             plt.show()

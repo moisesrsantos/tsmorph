@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import numpy as np
 
 def plot_gradient_timeseries(df, start_color='#61E6AA', end_color='#5722B1'):
     # Convert hex to RGB
@@ -37,3 +38,16 @@ def plot_gradient_timeseries(df, start_color='#61E6AA', end_color='#5722B1'):
     plt.tight_layout()
     plt.show()
     return
+
+def nmae(y, y_hat):
+    """
+    Computes the Normalized Mean Absolute Error (NMAE).
+
+    Args:
+        y (np.array): True values.
+        y_hat (np.array): Predicted values.
+    
+    Returns:
+        float: NMAE score.
+    """
+    return np.mean(np.abs(y - y_hat)) / np.mean(np.abs(y))
