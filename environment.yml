@@ -1,0 +1,17 @@
+name: tsmorph
+channels:
+  - defaults
+dependencies:
+  - python=3.8
+  - matplotlib
+  - scipy                   
+  - pip
+  - pip:
+    - matplotlib
+    - numpy
+    - pandas
+    - pycatch22
+    - neuralforecast
+
+
+

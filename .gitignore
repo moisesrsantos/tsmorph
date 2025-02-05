@@ -1,0 +1,48 @@
+# TypeScript
+*.tsbuildinfo
+
+# Logs
+logs/
+*.log
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pdb
+*.egg
+*.egg-info/
+dist/
+build/
+*.so
+
+# Anaconda
+.env/
+.venv/
+env/
+venv/
+env.bak/
+venv.bak/
+.ipynb_checkpoints/
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDEs and editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Cache
+.cache/
+dist/
+build/
+tmp/
+temp/

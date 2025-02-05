@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tsmorph"
+version = "0.1.0"
+description = "A package for generating semi-synthetic time series using morphing techniques."
+readme = "README.md"
+authors = [
+    { name = "Moisés Santos" }
+]
+license = { text = "GPL-3.0-only" }
+dependencies = [
+    "numpy",
+    "pandas",
+    "matplotlib",
+    "pycatch22",
+    "neuralforecast"
+]
+requires-python = ">=3.7"
+
+[tool.setuptools]
+packages = ["tsmorph"]
