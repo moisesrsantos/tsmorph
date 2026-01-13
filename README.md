@@ -68,28 +68,28 @@ If you use `tsMorph` in your research, please cite:
 }
 ```
 
-## Exemplo: Comparação visual — Linear vs DBA 🔧
+## Example: Visual comparison — Linear vs DBA 🔧
 
-Este repositório inclui um exemplo que gera uma comparação visual entre o morphing linear (puro) e o morphing com alinhamento via DBA.
+This repository includes an example that generates a visual comparison between pure linear morphing and morphing with DBA alignment.
 
-- Arquivo de exemplo: `examples/compare_morphing.py`
-- Gera: `examples/morph_comparison.png`
+- Example script: `examples/compare_morphing.py`
+- Generates: `examples/morph_comparison.png`
 
-Como executar:
+How to run:
 
 ```bash
 python examples/compare_morphing.py
 ```
 
-O script gera um gráfico com duas linhas de subplots:
-- Topo: morphing linear entre `S` e `T` (sem alinhamento temporal).
-- Fundo: morphing com DBA (as séries são alinhadas antes da interpolação).
+The script produces a figure with two stacked subplots:
+- Top: linear morphing between `S` and `T` (no temporal alignment).
+- Bottom: DBA-aligned morphing (series are aligned before interpolation).
 
-Ele também imprime um tempo simples de benchmark (tempo de execução do `fit` com e sem DBA). Tipicamente, observamos que o DBA é mais lento devido ao cálculo do caminho DTW iterado.
+It also prints a simple benchmark (execution time for `fit` with and without DBA). Typically, DBA is slower due to the iterative DTW path computations.
 
-Exemplo de saída (imagem gerada):
+Example output (generated image):
 
-![Comparação Linear vs DBA](examples/morph_comparison.png)
+![Linear vs DBA comparison](examples/morph_comparison.png)
 
 ---
 
