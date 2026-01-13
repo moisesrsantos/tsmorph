@@ -54,7 +54,11 @@ class TSmorph:
         for index, i in enumerate(alpha):
             y_morph[f"S2T_{index}"] = i * T_aligned + (1 - i) * S_aligned
 
-        return pd.DataFrame(y_morph)
+        # Ensure consistent numeric arrays and construct dataframe from stacked columns
+        vals = [np.asarray(v, dtype=float) for v in y_morph.values()]
+        data = np.vstack(vals).T
+        cols = [str(k) for k in y_morph.keys()]
+        return pd.DataFrame(data, columns=cols)
 
     def _dtw_path(self, a: np.ndarray, b: np.ndarray):
         """Computes the DTW alignment path between sequences `a` and `b`.
